@@ -2,13 +2,6 @@ let puntuacion: number = 0;
 let numeroCarta: number = 0;
 let puntuacionFinal: number = 0;
 
-document.addEventListener("DOMContentLoaded", () => {
-
-    deshabilitarBoton("nuevapartida");
-    deshabilitarBoton("plantate");
-    deshabilitarBoton("saber");
-  });
-
   const deshabilitarBoton = (elementoId: string) => {
     const elemento = document.getElementById(elementoId)
 
@@ -56,13 +49,13 @@ const repartoCarta = () => {
    numeroCarta = generarNumeroCarta(numeroAlAzar);
    mostrarCarta(numeroCarta);
    calculaPuntacion();
+   muestraPuntuacion();
    habilitarBoton("plantate");
    comprobarPartida();
  };
 
 const calculaPuntacion = () => {
   puntuacionFinal = puntuacionFinal + puntuacionCarta(numeroCarta);
-  muestraPuntuacion();
 }
 const puntuacionCarta = (carta : number) => {
   return carta <= 7 ? carta : 0.5; 
@@ -181,6 +174,8 @@ const nuevaPartida = () => {
   deshabilitarBoton("nuevapartida");
   deshabilitarBoton("saber");
 }
+
+document.addEventListener("DOMContentLoaded", nuevaPartida);
 
 const nuevapartidaBoton = document.getElementById("nuevapartida");
     if (nuevapartidaBoton !== null && nuevapartidaBoton !== undefined && nuevapartidaBoton instanceof HTMLButtonElement){
