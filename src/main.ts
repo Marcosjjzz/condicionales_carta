@@ -61,28 +61,30 @@ const puntuacionCarta = (carta : number) => {
   return carta <= 7 ? carta : 0.5; 
  }
 
-const comprobarPartida = () => {
+ const comprobarPartida = () => {
   if (puntuacionFinal === 7.5) {
-      hasGanado();
+          ganadoPerdido(true);
   } else if (puntuacionFinal > 7.5) {
-      hasPerdido();
+          ganadoPerdido(false);
     }
     
   }
-  const hasGanado = () => { 
+  const ganadoPerdido = (comprobar : boolean) => { 
+    if (comprobar === true){
     mostrarMensaje ("Lo has clavado ! Enhorabuena !");
     deshabilitarBoton("damecarta");
     deshabilitarBoton("plantate");
     habilitarBoton("nuevapartida");
     deshabilitarBoton("saber");
-  }
-  const hasPerdido = () => {
-    mostrarMensaje ("GAME OVER VUELVA A INTENTARLO");
-    deshabilitarBoton("damecarta");
-    deshabilitarBoton("plantate");
-    habilitarBoton("nuevapartida");
-    deshabilitarBoton("saber");
-  }
+    } else {
+        mostrarMensaje ("GAME OVER VUELVA A INTENTARLO");
+        deshabilitarBoton("damecarta");
+        deshabilitarBoton("plantate");
+        habilitarBoton("nuevapartida");
+        deshabilitarBoton("saber");    
+    }
+};
+  
 
 const comprobarBoton = document.getElementById("damecarta");
 if (comprobarBoton !== null && comprobarBoton !== undefined && comprobarBoton instanceof HTMLButtonElement){
@@ -170,7 +172,7 @@ const nuevaPartida = () => {
   mostrarMensaje("");
   mostrarCarta(0);
   habilitarBoton("damecarta");
-  habilitarBoton("plantate");
+  deshabilitarBoton("plantate");
   deshabilitarBoton("nuevapartida");
   deshabilitarBoton("saber");
 }
