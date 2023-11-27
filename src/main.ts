@@ -71,19 +71,27 @@ const puntuacionCarta = (carta : number) => {
   }
   const ganadoPerdido = (comprobar : boolean) => { 
     if (comprobar === true){
-    mostrarMensaje ("Lo has clavado ! Enhorabuena !");
-    deshabilitarBoton("damecarta");
-    deshabilitarBoton("plantate");
-    habilitarBoton("nuevapartida");
-    deshabilitarBoton("saber");
+        ganar();
+  
     } else {
-        mostrarMensaje ("GAME OVER VUELVA A INTENTARLO");
-        deshabilitarBoton("damecarta");
-        deshabilitarBoton("plantate");
-        habilitarBoton("nuevapartida");
-        deshabilitarBoton("saber");    
+        perdido();
     }
 };
+
+const ganar = () => { 
+  mostrarMensaje ("Lo has clavado ! Enhorabuena !");
+  deshabilitarBoton("damecarta");
+  deshabilitarBoton("plantate");
+  habilitarBoton("nuevapartida");
+  deshabilitarBoton("saber");
+}
+const perdido = () => {
+  mostrarMensaje ("GAME OVER VUELVA A INTENTARLO");
+  deshabilitarBoton("damecarta");
+  deshabilitarBoton("plantate");
+  habilitarBoton("nuevapartida");
+  deshabilitarBoton("saber"); 
+}
   
 
 const comprobarBoton = document.getElementById("damecarta");
